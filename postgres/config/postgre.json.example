@@ -1,0 +1,15 @@
+{
+  "connection": {
+    "user": "nexx",
+    "password": "12312311",
+    "database": "gvn",
+    "host": "localhost",
+    "port": 5432,
+    "ssl": false,
+    "max": 20,
+    "min": 0,
+    "idleTimeoutMillis": 1000,
+    "refreshIdle": true,
+    "schema": "gvn"
+  }
+}

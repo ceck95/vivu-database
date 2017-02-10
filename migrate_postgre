@@ -1,0 +1,47 @@
+#!/usr/bin/env php
+<?php
+/**
+ * CreatedBy: thangcest2@gmail.com
+ * Date: 9/13/16
+ * Time: 4:38 PM
+ */
+define('ROOT', __DIR__);
+
+include ROOT . '/postgres/migration/NexxBaseMigration.php';
+
+if (count($argv) <= 1 || !in_array($argv[1], NexxBaseMigration::$availableCommands)) {
+    $ac = implode(',', NexxBaseMigration::$availableCommands);
+    echo "No command specified, available commands: " . PHP_EOL;
+    echo $ac . PHP_EOL;
+    exit;
+}
+
+$migration = new NexxBaseMigration();
+
+switch ($argv[1]) {
+    case 'up' :
+        $result = $migration->up();
+        if ($result === -1) {
+            echo "No new migration found. Your system are up to date" . PHP_EOL;
+            exit;
+        }
+        
+        if ($result['status'] == true) {
+            echo "Execute {$result['totalExecutedFiles']} files successfully" . PHP_EOL;
+            echo "Details: " . PHP_EOL;
+            foreach ($result['executedFiles'] as $fileName) {
+                echo $fileName . PHP_EOL;
+            }
+        } else {
+            echo "Migrate failed. Check your error/file and re-run this command." . PHP_EOL;
+        }
+        exit;
+    case 'create':
+        $fileName = !isset($argv[2]) ? 'no_name' : $argv[2];
+        echo 'Created successfully file: ' . $migration->create($fileName) . PHP_EOL;
+        exit;
+    case 'makeHistory':
+        echo 'History is written, check:' . PHP_EOL . $migration->forceWriteHistory();
+        exit();
+}
+
