@@ -1,0 +1,1 @@
+ALTER TABLE vv.quote RENAME checkout_medthod  TO checkout_method;

@@ -1,0 +1,1 @@
+ALTER TABLE vv.sales_order ADD COLUMN code text DEFAULT vv.order_code_generator();
