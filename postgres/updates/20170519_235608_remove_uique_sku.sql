@@ -1,0 +1,1 @@
+ALTER TABLE vv.product DROP CONSTRAINT product_sku_unique;
