@@ -15,6 +15,18 @@ CREATE TABLE system_settings (
     status int DEFAULT 1
 );
 
+CREATE TABLE slide (
+    id serial NOT NULL PRIMARY KEY,
+    image text,
+    link text,
+    priority int,
+    created_at timestamp with time zone NOT NULL DEFAULT NOW(),
+    updated_at timestamp with time zone NOT NULL DEFAULT NOW(),
+    created_by bigint,
+    updated_by bigint,
+    status int DEFAULT 1
+);
+
 
 -- Table: gis_country
 
