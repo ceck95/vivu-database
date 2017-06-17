@@ -1,10 +1,5 @@
 <?php
 
-/**
- * CreatedBy: thangcest2@gmail.com
- * Date: 9/13/16
- * Time: 4:25 PM
- */
 
 class Database
 {
